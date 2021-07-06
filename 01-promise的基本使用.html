@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    //第一次网络请求代码resolve解决,reject拒绝
+    //链式编程
+    // new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve()
+    //   }, 1000)
+    // }).then(() => {
+    //   //第一次拿到处理结果的代码
+    //   console.log('hello')
+    //   console.log('hello')
+    //   console.log('hello')
+    //   console.log('hello')
+    //   console.log('hello')
+    //   console.log('hello')
+
+    //   return new promise((resolve, reject) => {
+    //     //第二次网络请求代码
+    //     setTimeout(() => {
+    //       resolve()
+    //     }, 1000)
+    //   })
+    // }).then(() => {
+    //   //第二次拿到处理结果的代码
+    //   console.log('hi')
+    //   console.log('hi')
+    //   console.log('hi')
+    //   console.log('hi')
+    //   console.log('hi')
+    //   console.log('hi')
+
+    //   return new promise((resolve, reject) => {
+    //     //第三次网络请求代码
+    //     setTimeout(() => {
+    //       resolve()
+    //     })
+    //   })
+    // }).then(() => {
+    //   //第三次拿到处理结果的代码
+    //   console.log('bye')
+    //   console.log('bye')
+    //   console.log('bye')
+    //   console.log('bye')
+    //   console.log('bye')
+    //   console.log('bye')
+    // })
+
+
+    //new -> 构造函数（1保存了一些状态信息2执行传入的函数）
+    //在执行传入调函数时，会传入两个参数resolve, reject，这两个本身又是函数
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        //网络请求异步成功时调用resolve便执行下一步then
+        //resolve('helloword')
+        //失败的时候调用reject，执行catch这一步
+        reject('error message')
+      }, 1000)
+    }).then((data) => {
+      console.log(data)
+      console.log(data)
+      console.log(data)
+    }).catch((err) => {
+      console.log(err)
+    })
+
+</script>
+</body>
+
+</html>
